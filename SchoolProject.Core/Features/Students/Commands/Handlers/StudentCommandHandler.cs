@@ -36,8 +36,8 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
             //check condition 
             if (result == "Exist")
                 return UnprocessableEntity<string>("Name is Exist");
-            else if (result == "Invalid Department Id")
-                return BadRequest<string>("Invalid Department Id");
+            //else if (result == "Invalid Department Id")
+            //    return BadRequest<string>("Invalid Department Id");
             else if (result == "Success")
                 return Created<string>(_stringLocalizer[SharedResourcesKeys.Created]);
             else return BadRequest<string>();

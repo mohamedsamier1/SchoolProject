@@ -47,9 +47,9 @@ namespace SchoolProject.Service.Implementations
                 .FirstOrDefaultAsync(x =>
                     (isArabic ? x.NameAr : x.NameEn) == studentName); if (studentname != null)
                 return "Exist";
-            var isvalidId = await _studentRepository.GetTableNoTracking().AnyAsync(s => s.DID == student.DID);
-            if (!isvalidId)
-                return "Invalid Department Id";
+            //var isvalidId = await _studentRepository.GetTableNoTracking().AnyAsync(d => d.Department.DId == student.DID);
+            //if (!isvalidId)
+            //    return "Invalid Department Id";
             await _studentRepository.AddAsync(student);
             return "Success";
         }
