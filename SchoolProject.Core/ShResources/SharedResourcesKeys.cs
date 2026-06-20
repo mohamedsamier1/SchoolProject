@@ -19,6 +19,7 @@
         public const string EmaliIsExist = "Emali Is Exist";
         public const string UserNameIsExist = "User Name Is Exist";
         public const string FaildToAddUser = "Faild To Add User";
+        public const string UpdatedFailed = "Updated Failed";
 
     }
 }
