@@ -34,5 +34,11 @@ namespace SchoolProject.APi.Controllers
             var response = await _mediator.Send(command);
             return NewResult(response);
         }
+        [HttpDelete(Router.UserRouting.DeleteUser)]
+        public async Task<IActionResult> DeletedUser([FromRoute] int id)
+        {
+            var resutl = await _mediator.Send(new DeleteUserCommand(id));
+            return NewResult(resutl);
+        }
     }
 }
