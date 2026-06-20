@@ -153,4 +153,19 @@
   <data name="Updated" xml:space="preserve">
     <value>تم التعديل بنجاح</value>
   </data>
+  <data name="NotNull" xml:space="preserve">
+    <value>يجب ان لا يكون فارغ </value>
+  </data>
+  <data name="PasswordNotEqualConfirmePassword" xml:space="preserve">
+    <value>يجب تطابق الباسورد و تاكيد الباسورد</value>
+  </data>
+  <data name="EmaliIsExist" xml:space="preserve">
+    <value>هذا الايميل موجود بالفعل</value>
+  </data>
+  <data name="UserNameIsExist" xml:space="preserve">
+    <value>هذا المستخدم موجود بالفعل</value>
+  </data>
+  <data name="FaildToAddUser" xml:space="preserve">
+    <value>حدثت عمله خطا عند إضافه المستخدم</value>
+  </data>
 </root>

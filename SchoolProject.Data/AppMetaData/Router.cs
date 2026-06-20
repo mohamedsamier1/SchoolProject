@@ -27,6 +27,17 @@
             public const string PaginatedDepartment = Prefix + "Paginated";
 
         }
+        public static class UserRouting
+        {
+            public const string Prefix = Rule + "Department" + "/";
+            public const string GetUsertlist = Prefix + "List";
+            public const string GetUserById = Prefix + "{id}";
+            public const string CreateUser = Prefix + "Create";
+            public const string EditUser = Prefix + "Edit";
+            public const string DeleteUser = Prefix + "Delete" + "{id}";
+            public const string PaginatedUser = Prefix + "Paginated";
+
+        }
 
 
 

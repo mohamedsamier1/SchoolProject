@@ -153,4 +153,19 @@
   <data name="Updated" xml:space="preserve">
     <value>Updated Successfully</value>
   </data>
+  <data name="NotNull" xml:space="preserve">
+    <value> Not Null</value>
+  </data>
+  <data name="PasswordNotEqualConfirmePassword" xml:space="preserve">
+    <value>Password Not Equal ConfirmePassword</value>
+  </data>
+  <data name="EmaliIsExist" xml:space="preserve">
+    <value>Emali Is Exist</value>
+  </data>
+  <data name="UserNameIsExist" xml:space="preserve">
+    <value>User Name Is Exist</value>
+  </data>
+  <data name="FaildToAddUser" xml:space="preserve">
+    <value>Faild To Add User</value>
+  </data>
 </root>
