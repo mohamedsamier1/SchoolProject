@@ -10,7 +10,8 @@ using SchoolProject.Data.Entities.Identity;
 namespace SchoolProject.Core.Features.ApplicationUser.Commands.Handlers
 {
     public class UserHandlerCommand : ResponseHandler,
-                                                    IRequestHandler<AddUserCommand, Response<string>>
+                                                    IRequestHandler<AddUserCommand, Response<string>>,
+                                                    IRequestHandler<UpdateUserCommand, Response<string>>
     {
         #region filde
         public readonly IMapper _mapper;
@@ -36,8 +37,22 @@ namespace SchoolProject.Core.Features.ApplicationUser.Commands.Handlers
             if (username != null) return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.UserNameIsExist]);
             var mapper = _mapper.Map<User>(request);
             var createreult = await _userManager.CreateAsync(mapper, request.Password);
-            if (createreult == null) return BadRequest<string>(createreult.Errors.FirstOrDefault().Description);
+            if (!createreult.Succeeded) return BadRequest<string>(
+               string.Join(" | ",
+               createreult.Errors.Select(e => e.Description)));
             return Created("");
+        }
+
+        public async Task<Response<string>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        {
+            var user = await _userManager.FindByIdAsync(request.Id.ToString());
+            if (user == null) return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.NotFoundId]);
+            var mapper = _mapper.Map(request, user);
+            var resutl = await _userManager.UpdateAsync(mapper);
+            if (!resutl.Succeeded) return BadRequest<string>(
+               string.Join(" | ",
+               resutl.Errors.Select(e => e.Description)));
+            return Success("");
         }
         #endregion
     }
