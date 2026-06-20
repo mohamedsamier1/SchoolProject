@@ -14,6 +14,11 @@
         public const string UnAuthorized = "You are not Authorized This Resources";
         public const string UnProcessableEntity = "There are Validation Errors Or Syntax Errors";
         public const string Updated = "Updated Successfully";
+        public const string NotNull = "Not Null";
+        public const string PasswordNotEqualConfirmePassword = "Password Not Equal ConfirmePassword";
+        public const string EmaliIsExist = "Emali Is Exist";
+        public const string UserNameIsExist = "User Name Is Exist";
+        public const string FaildToAddUser = "Faild To Add User";
 
     }
 }

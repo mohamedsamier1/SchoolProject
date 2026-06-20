@@ -1,16 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SchoolProject.Data.Entities;
+using SchoolProject.Data.Entities.Identity;
 
 namespace SchoolProject.Infrustructure.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<int>, int, IdentityUserClaim<int>, IdentityUserRole<int>, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<DepartmentSubject>()
                         .HasKey(x => new { x.SubId, x.DeptId });
             modelBuilder.Entity<StudentSubject>()
@@ -28,8 +33,9 @@ namespace SchoolProject.Infrustructure.Data
                        .WithOne(i => i.DepartmentManager)
                        .HasForeignKey<Department>(d => d.Instructor_ManagerId)
                        .OnDelete(DeleteBehavior.Restrict);
-        }
 
+        }
+        public DbSet<User> User { get; set; }
         public DbSet<Student> students { get; set; }
         public DbSet<Department> departments { get; set; }
         public DbSet<Subject> subjects { get; set; }

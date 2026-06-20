@@ -26,6 +26,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 #region Dependancy Ingections
 builder.Services.AddInfrustructureDependancies()
 .AddServiceDependancies()
+.AddServiceRegisteration()
 .AddCoreDependancies();
 #endregion
 
