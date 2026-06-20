@@ -36,6 +36,7 @@
             public const string EditUser = Prefix + "Edit";
             public const string DeleteUser = Prefix + "Delete" + "{id}";
             public const string PaginatedUser = Prefix + "Paginated";
+            public const string ChangeUserPassword = Prefix + "Change-Password";
 
         }
 
