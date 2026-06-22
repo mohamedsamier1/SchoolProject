@@ -43,5 +43,6 @@ namespace SchoolProject.Infrustructure.Data
         public DbSet<DepartmentSubject> departmentsSubjects { get; set; }
         public DbSet<Instructor> instructors { get; set; }
         public DbSet<InstructorSubject> instructorSubjects { get; set; }
+        public DbSet<UserRefreshToken> UserRefreshToken { get; set; }
     }
 }
