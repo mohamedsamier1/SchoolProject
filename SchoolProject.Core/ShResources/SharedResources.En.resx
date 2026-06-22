@@ -171,4 +171,31 @@
   <data name="UpdatedFailed" xml:space="preserve">
     <value>Updated Failed</value>
   </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="UserNameIsNotExist" xml:space="preserve">
+    <value>User Name Is Not Exist</value>
+  </data>
+  <data name="UserNameOrPasswordNotCorrect" xml:space="preserve">
+    <value>User Name Or Password Not Correct</value>
+  </data>
+  <data name="refreshTokenisexpired" xml:space="preserve">
+    <value>Refresh Token is Expired</value>
+  </data>
+  <data name="AlgorithmsIsWrong" xml:space="preserve">
+    <value>Algorithms Is Wrong</value>
+  </data>
+  <data name="Tokenisnotexpired" xml:space="preserve">
+    <value>Token is not expired</value>
+  </data>
+  <data name="refreshTokenisnotFound" xml:space="preserve">
+    <value>Refresh Token is not Found</value>
+  </data>
+  <data name="TokenisExpired" xml:space="preserve">
+    <value>Token is Expired</value>
+  </data>
 </root>

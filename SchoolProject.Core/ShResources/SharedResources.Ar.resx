@@ -171,4 +171,31 @@
   <data name="UpdatedFailed" xml:space="preserve">
     <value>حدث خطا اثناء التحديث</value>
   </data>
+  <data name="UserName" xml:space="preserve">
+    <value>اسم المستخدم</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>كلمه المرور</value>
+  </data>
+  <data name="UserNameIsNotExist" xml:space="preserve">
+    <value>هذا المستخدم غير موجود</value>
+  </data>
+  <data name="UserNameOrPasswordNotCorrect" xml:space="preserve">
+    <value>اسم المستخدم او كلمه المرور غير صحيحة</value>
+  </data>
+  <data name="refreshTokenisexpired" xml:space="preserve">
+    <value>التوكن هذا منتهي</value>
+  </data>
+  <data name="AlgorithmsIsWrong" xml:space="preserve">
+    <value>هناك خطاء فى الخوازرميه</value>
+  </data>
+  <data name="Tokenisnotexpired" xml:space="preserve">
+    <value>رمز الوصول ليس منتهى</value>
+  </data>
+  <data name="refreshTokenisnotFound" xml:space="preserve">
+    <value>رمز الوصول غير موجود</value>
+  </data>
+  <data name="TokenisExpired" xml:space="preserve">
+    <value>رمز الوصول  منتهى</value>
+  </data>
 </root>

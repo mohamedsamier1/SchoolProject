@@ -29,7 +29,7 @@
         }
         public static class UserRouting
         {
-            public const string Prefix = Rule + "Department" + "/";
+            public const string Prefix = Rule + "User" + "/";
             public const string GetUsertlist = Prefix + "List";
             public const string GetUserById = Prefix + "{id}";
             public const string CreateUser = Prefix + "Create";
@@ -37,6 +37,15 @@
             public const string DeleteUser = Prefix + "Delete" + "{id}";
             public const string PaginatedUser = Prefix + "Paginated";
             public const string ChangeUserPassword = Prefix + "Change-Password";
+
+        }
+        public static class Authentication
+        {
+            public const string Prefix = Rule + "Authentication" + "/";
+            public const string SignIn = Prefix + "SignIn";
+            public const string RefreshToken = Prefix + "RefreshToken";
+            public const string ValidateToken = Prefix + "ValidateToken";
+
 
         }
 
