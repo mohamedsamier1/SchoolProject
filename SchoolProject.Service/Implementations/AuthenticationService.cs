@@ -58,8 +58,7 @@ namespace SchoolProject.Service.Implementations
 
         private async Task<(JwtSecurityToken token, string accessToken)> GenerateJwtToken(User user)
         {
-            var roles = await _userManager.GetRolesAsync(user);
-            var claims = GetClaims(user, roles.ToList());
+            var claims = await GetClaims(user);
 
             var jwtToken = new JwtSecurityToken(
                 issuer: _jwtSettings.Issuer,
@@ -80,8 +79,9 @@ namespace SchoolProject.Service.Implementations
 
         #region Claims
 
-        public List<Claim> GetClaims(User user, List<string> roles)
+        public async Task<List<Claim>> GetClaims(User user)
         {
+            var roles = await _userManager.GetRolesAsync(user);
             var claims = new List<Claim>
            {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
@@ -93,6 +93,8 @@ namespace SchoolProject.Service.Implementations
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
+            var userClaims = await _userManager.GetClaimsAsync(user);
+            claims.AddRange(userClaims);
             return claims;
         }
 
