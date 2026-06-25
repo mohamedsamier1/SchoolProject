@@ -198,4 +198,31 @@
   <data name="TokenisExpired" xml:space="preserve">
     <value>رمز الوصول  منتهى</value>
   </data>
+  <data name="AddFaild" xml:space="preserve">
+    <value>حدث خطا</value>
+  </data>
+  <data name="ThisRoleIsUsed" xml:space="preserve">
+    <value>هذه الصلاحيه مستخدمه</value>
+  </data>
+  <data name="NotFoundUserId" xml:space="preserve">
+    <value>هذا المستخدم غير موجود</value>
+  </data>
+  <data name="FialedToRemoveOldRoles" xml:space="preserve">
+    <value>فشل حذف الصلاحيات القديمه</value>
+  </data>
+  <data name="FialedToAddNewRoles" xml:space="preserve">
+    <value>فشل اضافه الصلاحيات الجديده</value>
+  </data>
+  <data name="FialedToUpdateUserRoles" xml:space="preserve">
+    <value>فشل تحديث صلاحيات المستخدم</value>
+  </data>
+  <data name="FialedToRemoveOldClaim" xml:space="preserve">
+    <value>فشل حذف الصلاحيات الاستخدام القديمه</value>
+  </data>
+  <data name="FialedToAddNewClaim" xml:space="preserve">
+    <value>فشل اضافه الصلاحيات الاستخدام الجديده</value>
+  </data>
+  <data name="FialedToUpdateUserClaim" xml:space="preserve">
+    <value>فشل تحديث صلاحيات الاستخدام المستخدم</value>
+  </data>
 </root>

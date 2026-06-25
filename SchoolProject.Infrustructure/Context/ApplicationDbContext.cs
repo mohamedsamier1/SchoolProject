@@ -6,7 +6,7 @@ using SchoolProject.Data.Entities.Identity;
 
 namespace SchoolProject.Infrustructure.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<int>, int, IdentityUserClaim<int>, IdentityUserRole<int>, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
+    public class ApplicationDbContext : IdentityDbContext<User, Role, int, IdentityUserClaim<int>, IdentityUserRole<int>, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
@@ -36,6 +36,7 @@ namespace SchoolProject.Infrustructure.Data
 
         }
         public DbSet<User> User { get; set; }
+        public DbSet<Role> Role { get; set; }
         public DbSet<Student> students { get; set; }
         public DbSet<Department> departments { get; set; }
         public DbSet<Subject> subjects { get; set; }

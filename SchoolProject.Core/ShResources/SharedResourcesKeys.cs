@@ -31,6 +31,15 @@
         public const string refreshTokenisnotFound = "refreshTokenisnotFound";
         public const string refreshTokenisexpired = "refreshTokenisexpired";
         public const string TokenisExpired = "TokenisExpired";
+        public const string AddFaild = "AddFaild";
+        public const string ThisRoleIsUsed = "ThisRoleIsUsed";
+        public const string NotFoundUserId = "NotFoundUserId";
+        public const string FialedToRemoveOldRoles = "FialedToRemoveOldRoles";
+        public const string FialedToAddNewRoles = "FialedToAddNewRoles";
+        public const string FialedToUpdateUserRoles = "FialedToUpdateUserRoles";
+        public const string FialedToRemoveOldClaim = "FialedToRemoveOldClaim";
+        public const string FialedToAddNewClaim = "FialedToAddNewClaim";
+        public const string FialedToUpdateUserClaim = "FialedToUpdateUserClaim";
 
     }
 }
