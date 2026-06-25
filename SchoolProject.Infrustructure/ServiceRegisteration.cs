@@ -102,6 +102,13 @@ namespace SchoolProject.Infrustructure
                 }
                 });
             });
+            services.AddAuthorization(option =>
+            {
+                option.AddPolicy("CreateStudent", policy =>
+                {
+                    policy.RequireClaim("Create Student", "True");
+                });
+            });
             return services;
         }
     }

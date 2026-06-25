@@ -9,7 +9,7 @@ namespace SchoolProject.APi.Controllers
 {
 
     [ApiController]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class StudentController : AppBaseController
     {
         #region End Point
@@ -33,6 +33,7 @@ namespace SchoolProject.APi.Controllers
             var response = await _mediator.Send(new GetStudentByIdQuery(id));
             return NewResult(response);
         }
+        [Authorize(Policy = "CreateStudent")]
         [HttpPost(Router.StudentRouting.CreateStudent)]
         public async Task<IActionResult> CreateStudent([FromBody] AddStudentCommand command)
         {
