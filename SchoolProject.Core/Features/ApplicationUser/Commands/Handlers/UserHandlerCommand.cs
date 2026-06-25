@@ -43,6 +43,7 @@ namespace SchoolProject.Core.Features.ApplicationUser.Commands.Handlers
             if (!createreult.Succeeded) return BadRequest<string>(
                string.Join(" | ",
                createreult.Errors.Select(e => e.Description)));
+            await _userManager.AddToRoleAsync(mapper, "User");
             return Created("");
         }
 

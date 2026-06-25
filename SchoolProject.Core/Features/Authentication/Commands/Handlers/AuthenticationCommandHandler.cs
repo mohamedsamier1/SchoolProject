@@ -56,15 +56,23 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
             var userIdAndExpirydate = await _authenticationService.ValidateDetails(jwtToken, request.AccessToken, request.RefreshToken);
             switch (userIdAndExpirydate)
             {
-                case ("AlgorithmsIsWrong", null): return Unauthorized<JwtAuthResult>(_stringLocalizer[SharedResourcesKeys.AlgorithmsIsWrong]);
+                case ("AlgorithmsIsWrong", null):
+                    return Unauthorized<JwtAuthResult>(_stringLocalizer[SharedResourcesKeys.AlgorithmsIsWrong]);
+
                 case ("Tokenisnotexpired", null):
                     return Unauthorized<JwtAuthResult>(_stringLocalizer[SharedResourcesKeys.Tokenisnotexpired]);
+
                 case ("refreshTokenisnotFound", null):
                     return Unauthorized<JwtAuthResult>(_stringLocalizer[SharedResourcesKeys.refreshTokenisnotFound]);
+
                 case ("refreshTokenisexpired", null):
                     return Unauthorized<JwtAuthResult>(_stringLocalizer[SharedResourcesKeys.refreshTokenisexpired]);
-                default:
-                    break;
+
+                case ("ClaimIdNotFound", null):
+                    return Unauthorized<JwtAuthResult>("Claim Id Not Found");
+
+                case ("InvalidUserIdClaim", null):
+                    return Unauthorized<JwtAuthResult>("Invalid User Id Claim");
             }
             var (userId, expiryDate) = userIdAndExpirydate;
             var user = await _userManager.FindByIdAsync(userId);

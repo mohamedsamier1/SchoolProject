@@ -198,4 +198,31 @@
   <data name="TokenisExpired" xml:space="preserve">
     <value>Token is Expired</value>
   </data>
+  <data name="AddFaild" xml:space="preserve">
+    <value>Add Faild</value>
+  </data>
+  <data name="ThisRoleIsUsed" xml:space="preserve">
+    <value>This Role Is Used</value>
+  </data>
+  <data name="NotFoundUserId" xml:space="preserve">
+    <value>Not Found User Id</value>
+  </data>
+  <data name="FialedToRemoveOldRoles" xml:space="preserve">
+    <value>Fialed To Remove Old Roles</value>
+  </data>
+  <data name="FialedToAddNewRoles" xml:space="preserve">
+    <value>Fialed To Add New Roles</value>
+  </data>
+  <data name="FialedToUpdateUserRoles" xml:space="preserve">
+    <value> Fialed To Update User Roles</value>
+  </data>
+  <data name="FialedToRemoveOldClaim" xml:space="preserve">
+    <value>Fialed To Remove Old Claim</value>
+  </data>
+  <data name="FialedToAddNewClaim" xml:space="preserve">
+    <value>Fialed To Add New Claim</value>
+  </data>
+  <data name="FialedToUpdateUserClaim" xml:space="preserve">
+    <value>Fialed To Update User Claim</value>
+  </data>
 </root>

@@ -15,7 +15,7 @@ namespace SchoolProject.Infrustructure
     {
         public static IServiceCollection AddServiceRegisteration(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddIdentity<User, IdentityRole<int>>(options =>
+            services.AddIdentity<User, Role>(options =>
             {
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
@@ -40,30 +40,38 @@ namespace SchoolProject.Infrustructure
             //JWT Authentication
             var jwtSettings = new JwtSettings();
 
-            configuration.GetSection(nameof(jwtSettings)).Bind(jwtSettings);
+            configuration.GetSection("jwtSettings").Bind(jwtSettings);
 
             services.AddSingleton(jwtSettings);
 
-            services.AddAuthentication(x =>
+            services.AddAuthentication(options =>
             {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-                .AddJwtBearer(x =>
+            .AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    x.RequireHttpsMetadata = false;
-                    x.SaveToken = true;
-                    x.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = jwtSettings.ValidateIssuer,
-                        ValidIssuers = new[] { jwtSettings.Issuer },
-                        ValidateIssuerSigningKey = jwtSettings.ValidateIssuerSigningKey,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings.Secret)),
-                        ValidAudience = jwtSettings.Audience,
-                        ValidateAudience = jwtSettings.ValidateAudience,
-                        ValidateLifetime = jwtSettings.ValidateLifeTime,
-                    };
-                });
+                    ValidateIssuer = jwtSettings.ValidateIssuer,
+                    ValidIssuer = jwtSettings.Issuer,
+
+                    ValidateAudience = jwtSettings.ValidateAudience,
+                    ValidAudience = jwtSettings.Audience,
+
+                    ValidateIssuerSigningKey = jwtSettings.ValidateIssuerSigningKey,
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(jwtSettings.Secret)
+                    ),
+
+                    ValidateLifetime = jwtSettings.ValidateLifetime,
+
+                    ClockSkew = TimeSpan.Zero // 🔥 مهم جدًا
+                };
+            });
 
             //Swagger Gn
             services.AddSwaggerGen(c =>
