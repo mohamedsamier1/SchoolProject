@@ -225,4 +225,25 @@
   <data name="FialedToUpdateUserClaim" xml:space="preserve">
     <value>فشل تحديث صلاحيات الاستخدام المستخدم</value>
   </data>
+  <data name="EmailMustNotBeEmpty" xml:space="preserve">
+    <value>الايميل يجب ان لا يكون فارغ </value>
+  </data>
+  <data name="EmailMustNotBeNull" xml:space="preserve">
+    <value>الايميل يجب ان لا يكون له قيمه</value>
+  </data>
+  <data name="sendEmailFailed" xml:space="preserve">
+    <value>فشل ارسال الايميل</value>
+  </data>
+  <data name="EmailNotConfirmed" xml:space="preserve">
+    <value>الايميل ليس مؤكد</value>
+  </data>
+  <data name="TryToRegisterAgain" xml:space="preserve">
+    <value>اعد المحاول مره اخري</value>
+  </data>
+  <data name="ErrorWhenConfirmEmail" xml:space="preserve">
+    <value>حدثت عمله خطا عندتاكيد الايميل</value>
+  </data>
+  <data name="ConfirmeEmailSuccess" xml:space="preserve">
+    <value>تجحه عمليه تاكيد الاميل</value>
+  </data>
 </root>

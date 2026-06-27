@@ -42,6 +42,7 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
 
             //try to sign in 
             var signinresult = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
+            if (!user.EmailConfirmed) return BadRequest<JwtAuthResult>(_stringLocalizer[SharedResourcesKeys.EmailNotConfirmed]);
             //if failed return passord is wrong
             if (!signinresult.Succeeded) return BadRequest<JwtAuthResult>(_stringLocalizer[SharedResourcesKeys.UserNameOrPasswordNotCorrect]);
             //generate token 

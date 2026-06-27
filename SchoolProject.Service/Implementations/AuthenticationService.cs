@@ -247,6 +247,28 @@ namespace SchoolProject.Service.Implementations
             return (userId.ToString(), storedToken.ExpiryDate);
         }
 
+        public async Task<string> ConfirmEmail(int? userid, string? code)
+        {
+            if (userid == null || code == null)
+                return "userid or code is null";
+
+            var user = await _userManager.FindByIdAsync(userid.ToString());
+
+            if (user == null)
+                return "User not found";
+
+            var result = await _userManager.ConfirmEmailAsync(user, code);
+
+            if (!result.Succeeded)
+            {
+                return string.Join(", ", result.Errors.Select(e => e.Description));
+            }
+
+            var updatedUser = await _userManager.FindByIdAsync(userid.ToString());
+
+            return $"Success - EmailConfirmed = {updatedUser.EmailConfirmed}";
+        }
+
         #endregion
     }
 }

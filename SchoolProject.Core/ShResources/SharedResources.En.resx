@@ -225,4 +225,25 @@
   <data name="FialedToUpdateUserClaim" xml:space="preserve">
     <value>Fialed To Update User Claim</value>
   </data>
+  <data name="EmailMustNotBeEmpty" xml:space="preserve">
+    <value>Email Must Not Be Empty</value>
+  </data>
+  <data name="EmailMustNotBeNull" xml:space="preserve">
+    <value>Email Must Not Be Null</value>
+  </data>
+  <data name="sendEmailFailed" xml:space="preserve">
+    <value>send Email Failed</value>
+  </data>
+  <data name="EmailNotConfirmed" xml:space="preserve">
+    <value>Email Not Confirmed</value>
+  </data>
+  <data name="TryToRegisterAgain" xml:space="preserve">
+    <value>Try To Register Again</value>
+  </data>
+  <data name="ErrorWhenConfirmEmail" xml:space="preserve">
+    <value>ErrorWhenConfirmEmail</value>
+  </data>
+  <data name="ConfirmeEmailSuccess" xml:space="preserve">
+    <value>ConfirmeEmailSuccess</value>
+  </data>
 </root>

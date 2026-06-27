@@ -33,16 +33,20 @@ namespace SchoolProject.Infrustructure
                 options.User.AllowedUserNameCharacters =
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = true;
+                options.SignIn.RequireConfirmedEmail = true;
 
 
             }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
             //JWT Authentication
             var jwtSettings = new JwtSettings();
+            var emailSettings = new EmailSettings();
 
             configuration.GetSection("jwtSettings").Bind(jwtSettings);
+            configuration.GetSection("emailSettings").Bind(emailSettings);
 
             services.AddSingleton(jwtSettings);
+            services.AddSingleton(emailSettings);
 
             services.AddAuthentication(options =>
             {
