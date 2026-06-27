@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
+
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
 using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.ApplicationUser.Commands.Models;
 using SchoolProject.Core.ShResources;
 using SchoolProject.Data.Entities.Identity;
+using SchoolProject.Service.Abstracts;
 
 namespace SchoolProject.Core.Features.ApplicationUser.Commands.Handlers
 {
@@ -20,31 +23,39 @@ namespace SchoolProject.Core.Features.ApplicationUser.Commands.Handlers
         public readonly IMapper _mapper;
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
         private readonly UserManager<User> _userManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IEmailService _emailService;
+        private readonly IApplicationUserService _applicationUserService;
+
         #endregion
+
         #region Constractor
-        public UserHandlerCommand(IMapper mapper, IStringLocalizer<SharedResources> stringLocalizer, UserManager<User> userManager) : base(stringLocalizer)
+        public UserHandlerCommand(IMapper mapper, IStringLocalizer<SharedResources> stringLocalizer, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor, IEmailService emailService, IApplicationUserService applicationUserService) : base(stringLocalizer)
         {
             _mapper = mapper;
             _stringLocalizer = stringLocalizer;
             _userManager = userManager;
+            _httpContextAccessor = httpContextAccessor;
+            _emailService = emailService;
+            _applicationUserService = applicationUserService;
         }
         #endregion
         #region Handelfunc
         public async Task<Response<string>> Handle(AddUserCommand request, CancellationToken cancellationToken)
         {
-            //if Email is exist
-            var email = await _userManager.FindByEmailAsync(request.Email);
-            if (email != null) return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.EmaliIsExist]);
-            //if username is exist
-            var username = await _userManager.FindByNameAsync(request.UserName);
-            if (username != null) return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.UserNameIsExist]);
+
             var mapper = _mapper.Map<User>(request);
-            var createreult = await _userManager.CreateAsync(mapper, request.Password);
-            if (!createreult.Succeeded) return BadRequest<string>(
-               string.Join(" | ",
-               createreult.Errors.Select(e => e.Description)));
-            await _userManager.AddToRoleAsync(mapper, "User");
-            return Created("");
+            var createreult = await _applicationUserService.AddUserAsync(mapper, request.Password);
+            switch (createreult)
+            {
+                case "EmaliIsExist": return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.EmaliIsExist]);
+                case "UserNameIsExist": return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.UserNameIsExist]);
+                case "Failed": return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.TryToRegisterAgain]);
+                case "Success": return Success<string>("");
+                default: return BadRequest<string>(createreult);
+            }
+
+
         }
 
         public async Task<Response<string>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)

@@ -45,6 +45,12 @@
             public const string SignIn = Prefix + "SignIn";
             public const string RefreshToken = Prefix + "RefreshToken";
             public const string ValidateToken = Prefix + "ValidateToken";
+            public const string ConfirmEmail = "/Api/Authentication/ConfirmEmail";
+        }
+        public static class Emails
+        {
+            public const string Prefix = Rule + "Emails" + "/";
+            public const string SendEmail = Prefix + "SendEmail";
         }
         public static class Authorization
         {

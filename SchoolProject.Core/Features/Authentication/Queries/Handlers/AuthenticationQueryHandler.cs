@@ -7,7 +7,9 @@ using SchoolProject.Service.Abstracts;
 
 namespace SchoolProject.Core.Features.Authentication.Queries.Handlers
 {
-    public class AuthenticationQueryHandler : ResponseHandler, IRequestHandler<AuthorizeUserQuery, Response<string>>
+    public class AuthenticationQueryHandler : ResponseHandler,
+        IRequestHandler<AuthorizeUserQuery, Response<string>>,
+        IRequestHandler<ConfirmEmailQuery, Response<string>>
     {
 
         #region filde
@@ -31,6 +33,13 @@ namespace SchoolProject.Core.Features.Authentication.Queries.Handlers
             var result = await _authenticationService.ValidateToken(request.AccessToken);
             if (result == "NotExpired") return Success(result);
             return Unauthorized<string>(_stringLocalizer[SharedResourcesKeys.TokenisExpired]);
+        }
+
+        public async Task<Response<string>> Handle(ConfirmEmailQuery request, CancellationToken cancellationToken)
+        {
+            var confirmEmail = await _authenticationService.ConfirmEmail(request.UserId, request.Code);
+
+            return Success(confirmEmail);
         }
         #endregion
     }

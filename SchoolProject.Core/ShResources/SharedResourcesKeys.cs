@@ -24,6 +24,10 @@
         public const string Password = "Password";
         public const string UserNameIsNotExist = "User Name Is Not Exist";
         public const string UserNameOrPasswordNotCorrect = "UserNameOrPasswordNotCorrect";
+        public const string TryToRegisterAgain = "TryToRegisterAgain";
+        public const string EmailNotConfirmed = "EmailNotConfirmed";
+        public const string ErrorWhenConfirmEmail = "ErrorWhenConfirmEmail";
+        public const string ConfirmeEmailSuccess = "ConfirmeEmailSuccess";
 
 
         public const string AlgorithmsIsWrong = "AlgorithmsIsWrong";
@@ -40,6 +44,11 @@
         public const string FialedToRemoveOldClaim = "FialedToRemoveOldClaim";
         public const string FialedToAddNewClaim = "FialedToAddNewClaim";
         public const string FialedToUpdateUserClaim = "FialedToUpdateUserClaim";
+
+        public const string EmailMustNotBeEmpty = "EmailMustNotBeEmpty";
+        public const string EmailMustNotBeNull = "EmailMustNotBeNull";
+        public const string sendEmailFailed = "sendEmailFailed";
+
 
     }
 }
